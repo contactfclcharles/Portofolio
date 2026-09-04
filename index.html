@@ -7,11 +7,13 @@
   <meta name="description" content="Portfolio de Charles Fauchille, développeur web débutant." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cutive+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
 /* =========================================================
-   VARIABLES — inspirées du site que Charles a construit :
-   fond presque noir, serif élégante, accent bronze/doré.
+   VARIABLES — identité propre à Charles : fond presque noir,
+   typographie de développeur (grotesque + mono), accent
+   "braise" (clin d'œil au bois brûlé de la famille, en plus
+   énergique que le doré emprunté à AVP/Ardoir).
    Change ces valeurs pour ajuster tout le style d'un coup.
    ========================================================= */
 :root {
@@ -23,26 +25,27 @@
   --text: #e6e7ec;
   --text-muted: #9a9aa3;
   --text-faint: #6b6a73;
-  --accent: #b08d57;
-  --accent-soft: rgba(176, 141, 87, 0.12);
-  --accent-deep: #6f5c3c;
-  --radius: 2px;
+  --accent: #ff6a39;
+  --accent-rgb: 255, 106, 57;
+  --accent-soft: rgba(255, 106, 57, 0.12);
+  --accent-deep: #b8461f;
+  --radius: 4px;
   --max-width: 1000px;
   --transition: 0.3s ease;
 
-  /* tons clairs (ivoire), utilisés par .section-light — mêmes teintes que le CV */
+  /* tons clairs, utilisés par .section-light — mêmes teintes que le CV */
   --bg-light: #f5f0e6;
   --surface-light: #efe7d8;
   --text-on-light: #221f1b;
   --text-muted-on-light: #6b6355;
   --text-faint-on-light: #8f8676;
-  --accent-on-light: #8c6a3f;
+  --accent-on-light: #c1502a;
   --border-on-light: #d8cdb4;
 
-  --font-display: "Cormorant Garamond", "Georgia", serif;
-  --font-sc: "Cormorant SC", "Cormorant Garamond", serif;
-  --font-body: "EB Garamond", "Georgia", serif;
-  --font-mono: "Cutive Mono", monospace;
+  --font-display: "Space Grotesk", "Arial", sans-serif;
+  --font-sc: "Space Grotesk", "Arial", sans-serif;
+  --font-body: "Inter", "Helvetica", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 * {
@@ -109,11 +112,21 @@ ul {
 }
 
 .logo {
-  font-family: var(--font-sc);
-  font-weight: 600;
-  font-size: 1.3rem;
-  letter-spacing: 0.15em;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
   color: var(--text);
+}
+
+.logo .cursor {
+  color: var(--accent);
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 .nav-links {
@@ -171,7 +184,7 @@ ul {
   width: 900px;
   height: 900px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(176, 141, 87, 0.10) 0%, rgba(176, 141, 87, 0) 65%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14) 0%, rgba(var(--accent-rgb), 0) 65%);
   pointer-events: none;
 }
 
@@ -219,6 +232,15 @@ ul {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 3rem;
+}
+
+.hero-links {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -1.8rem;
+  margin-bottom: 2.5rem;
 }
 
 .btn {
@@ -275,14 +297,14 @@ ul {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.6);
+  box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.6);
   animation: pulse 2.2s infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.5); }
-  70% { box-shadow: 0 0 0 8px rgba(176, 141, 87, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(176, 141, 87, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(var(--accent-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); }
 }
 
 /* Repères chiffrés sous le hero */
@@ -351,7 +373,7 @@ ul {
   --text-faint: var(--text-faint-on-light);
   --accent: var(--accent-on-light);
   --border: var(--border-on-light);
-  --accent-soft: rgba(140, 106, 63, 0.10);
+  --accent-soft: rgba(193, 80, 42, 0.10);
 }
 
 .section-light > * {
@@ -366,9 +388,9 @@ ul {
 }
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.28em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.75rem;
@@ -571,6 +593,76 @@ ul {
   font-style: italic;
 }
 
+.hero-links .project-link-pending { border: 1px dashed var(--border); padding: 0.35rem 0.8rem; }
+
+.hero-links a {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-links a:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+/* =========================================================
+   EXERCICES (marques fictives)
+   ========================================================= */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.exercise-card {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  padding: 2rem;
+}
+.exercise-flag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 1.2rem;
+}
+.exercise-logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.exercise-mark { color: var(--accent); margin-right: 0.5rem; }
+.exercise-tagline {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.4rem;
+  font-style: italic;
+}
+.soncase-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.soncase-list li { color: var(--text-muted); font-size: 0.9rem; }
+.soncase-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-deep);
+  padding: 0.15rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
 /* =========================================================
    CONTACT
    ========================================================= */
@@ -703,7 +795,7 @@ ul {
   <!-- ===== HEADER / NAVIGATION ===== -->
   <header class="header">
     <nav class="navbar">
-      <a href="#accueil" class="logo">C · F</a>
+      <a href="#accueil" class="logo">charles.fauchille<span class="cursor">_</span></a>
 
       <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
         <span></span>
@@ -717,6 +809,7 @@ ul {
         <li><a href="#pourquoi">Les atouts</a></li>
         <li><a href="#competences">Savoir-faire</a></li>
         <li><a href="#projets">Projets</a></li>
+        <li><a href="#exercices">Exercices</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -735,18 +828,23 @@ ul {
         <h2 class="hero-subtitle">Développeur web junior — je transforme une idée en site qui fonctionne, vraiment</h2>
         <p class="hero-text">
           Je construis des sites web propres et fonctionnels avec HTML, CSS et JavaScript.
-          Pas juste des exercices : mon premier projet est un vrai site livré à une vraie
-          personne. Je cherche maintenant une équipe où continuer à apprendre vite, sur de
-          vrais projets.
+          Pas juste des exercices : mon premier projet est un vrai site, livré et rémunéré par
+          un vrai client. Je complète aujourd'hui cette pratique autodidacte par une formation
+          en alternance, pour structurer ce que j'ai appris seul et aller plus loin, plus vite —
+          et je cherche une équipe formatrice prête à miser sur ça.
         </p>
         <div class="hero-actions">
           <a href="#projets" class="btn btn-primary">Voir mes projets</a>
           <a href="#contact" class="btn btn-outline">Me contacter</a>
         </div>
+        <div class="hero-links">
+          <a href="https://avpatelier.com" target="_blank" rel="noopener">AVP Atelier ↗</a>
+          <span class="project-link-pending">Ardoir ↗ — bientôt en ligne</span>
+        </div>
         <div class="hero-stats">
           <div class="hero-stat">
             <strong>1</strong>
-            <span>projet livré à un vrai client</span>
+            <span>projet livré &amp; rémunéré</span>
           </div>
           <div class="hero-stat">
             <strong>3</strong>
@@ -770,11 +868,17 @@ ul {
         <p>
           J'ai appris à coder en construisant, de A à Z, un site e-commerce pour un atelier
           d'art — sans école ni formation, juste en cherchant les réponses au fur et à mesure.
-          Avant ça, plusieurs années en vente et dans le BTP m'ont appris à écouter un besoin,
+          Avant ça, une formation de trois ans en vente puis en commerce, complétée par
+          plusieurs années de terrain en vente et dans le BTP, m'a appris à écouter un besoin,
           m'adapter vite et aller jusqu'au bout d'un projet, même quand ça sort de ma zone de
           confort. C'est cette envie de construire des choses concrètes et utiles qui m'a donné
           le déclic pour le développement web, et je continue à apprendre en parallèle sur mes
-          propres projets. Aujourd'hui, je cherche une équipe prête à miser sur quelqu'un qui
+          propres projets. C'est cette même exigence que j'apporte aujourd'hui dans ma formation
+          en alternance : apprendre vite, livrer du concret, et ne pas se contenter de la
+          théorie. Mon objectif à moyen terme est clair : consolider les bases en front-end,
+          évoluer vers le full-stack, puis me spécialiser en cloud/DevOps — une progression
+          logique plutôt qu'un saut, pour bien comprendre chaque couche avant de passer à la
+          suivante. Je cherche une équipe — ou une école — prête à miser sur quelqu'un qui
           apprend vite et qui livre, plus que sur un CV parfait sur le papier.
         </p>
       </div>
@@ -843,7 +947,24 @@ ul {
         </div>
         <div class="skill-card">
           <h3>Outils</h3>
-          <p>Git &amp; GitHub, VS Code, déploiement (GitHub Pages / Netlify).</p>
+          <p>Git &amp; GitHub, VS Code, déploiement (GitHub Pages / Netlify), notions de Python.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Marketing &amp; vente</h3>
+          <p>Bases posées par une formation en vente puis en commerce, appliquées aujourd'hui
+            avec la méthode SONCASE (Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie,
+            Environnement) pour structurer les messages commerciaux d'un site — voir la
+            section Exercices ci-dessous.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Montage vidéo</h3>
+          <p>Capcut — plus de 100 heures de pratique, notamment pour la création de contenu
+            TikTok.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Bureautique &amp; visuels</h3>
+          <p>PowerPoint, Canva et Excel — bases acquises au lycée (présentations, visuels
+            simples, tableurs).</p>
         </div>
       </div>
     </section>
@@ -876,14 +997,66 @@ ul {
           </p>
           <p class="project-line">
             <strong>Résultat :</strong>
-            Site fonctionnel, catalogue en place, prêt à accueillir les premières commandes.
-            <span class="project-note">Nom de domaine en cours d'acquisition — lien ajouté dès sa mise en ligne.</span>
+            Site fonctionnel, catalogue en place, en ligne sur son propre nom de domaine et prêt
+            à accueillir les premières commandes.
+          </p>
+          <p class="project-line">
+            <strong>Suite :</strong>
+            À partir de septembre 2026, extension de la mission à la gestion des contenus et
+            des campagnes publicitaires TikTok/Instagram, ainsi qu'à la mise en place du suivi
+            Google Ads/Analytics sur le site.
+            <span class="project-note">Premiers chiffres d'audience et de conversion attendus
+            d'ici 1 à 2 mois — je préfère afficher de vraies données que d'annoncer des
+            résultats par avance.</span>
           </p>
 
           <div class="project-tags">
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Réseaux sociaux</span>
+          </div>
+          <div class="project-links">
+            <a href="https://avpatelier.com" target="_blank" rel="noopener">Voir le site ↗</a>
+            <a href="#" target="_blank" rel="noopener">Code sur GitHub ↗</a>
+          </div>
+        </article>
+
+        <!-- Projet 2 : site pour un vrai client (l'entreprise familiale) -->
+        <article class="project-card">
+          <div class="project-tag">N°02 — Projet client réel</div>
+          <h3>Atelier Ardoir — vitrine & boutique artisanale</h3>
+
+          <p class="project-line">
+            <strong>Contexte :</strong>
+            Créer le site vitrine et boutique en ligne de l'entreprise familiale de mobilier en
+            bois brûlé (technique japonaise du yakisugi), avec une vraie stratégie commerciale :
+            positionnement sur-mesure, authenticité face aux imitations bas de gamme (teinture
+            noire), et diversification des canaux de vente.
+          </p>
+          <p class="project-line">
+            <strong>Ce que j'ai fait :</strong>
+            Conception et développement complet du site : charte Japandi (blanc, noir, rouge)
+            avec une animation de flammes stylisée en page d'accueil, un panier d'achat
+            fonctionnel avec récapitulatif de commande envoyé par email, une section
+            "Paiement, livraison & retours" intégrant le droit de rétractation européen (avec
+            l'exception légale pour les pièces réalisées sur mesure), des mentions légales et
+            CGV prêtes à être complétées, et une préparation à l'intégration de la boutique
+            Etsy comme canal de vente complémentaire. Nom de marque ("Ardoir") vérifié en amont
+            pour éviter tout conflit avec des marques existantes.
+          </p>
+          <p class="project-line">
+            <strong>Résultat :</strong>
+            Site prêt à recevoir les informations commerciales définitives (prix, photos, lien
+            boutique) avant sa mise en ligne — conçu dès le départ comme un vrai outil de vente
+            pour un client réel, pas comme une simple vitrine statique.
+          </p>
+
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>E-commerce</span>
           </div>
           <div class="project-links">
             <span class="project-link-pending">Bientôt en ligne</span>
@@ -891,24 +1064,91 @@ ul {
           </div>
         </article>
 
-        <!-- Projet 2 : à venir -->
-        <article class="project-card project-card-empty">
-          <div class="project-tag">N°02 — Prochain projet</div>
-          <h3>[Ton prochain projet]</h3>
-          <p>
-            Emplacement réservé pour ton prochain projet (ex. une petite app qui utilise une
-            API publique, ou une todo-list en JavaScript).
+        <!-- Projet 3 : initiative personnelle (démarchage de clients artisans) -->
+        <article class="project-card">
+          <div class="project-tag">N°03 — Initiative personnelle</div>
+          <h3>Sites pour artisans — plateforme de prospection</h3>
+
+          <p class="project-line">
+            <strong>Contexte :</strong>
+            Après avoir livré un premier site à un vrai client, structurer une offre claire
+            pour proposer ce service à d'autres artisans et petits commerces locaux qui n'ont
+            pas de site — 35 % des TPE françaises sont dans ce cas (Baromètre France Num 2025).
           </p>
+          <p class="project-line">
+            <strong>Ce que j'ai fait :</strong>
+            Conception et développement d'un site de présentation de l'offre (déroulé du
+            projet, preuve par l'exemple, compétences), avec deux formules de tarification
+            (commission sur les ventes ou abonnement fixe, selon l'activité du client), et un
+            modèle d'email de prospection ciblée pour démarcher les bons prospects.
+          </p>
+          <p class="project-line">
+            <strong>Résultat :</strong>
+            Une offre commerciale complète et un outil de prospection prêts à l'emploi — la
+            preuve d'une démarche commerciale et pas seulement technique.
+          </p>
+
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Stratégie commerciale</span>
+          </div>
+          <div class="project-links">
+            <span class="project-link-pending">Bientôt en ligne</span>
+            <a href="#" target="_blank" rel="noopener">Code sur GitHub ↗</a>
+          </div>
         </article>
 
-        <!-- Projet 3 : à venir -->
-        <article class="project-card project-card-empty">
-          <div class="project-tag">N°03 — Prochain projet</div>
-          <h3>[Ton prochain projet]</h3>
-          <p>
-            Un deuxième emplacement libre — ajoute une capture d'écran et des liens
-            dès que ce projet est prêt à être montré.
-          </p>
+      </div>
+    </section>
+
+    <!-- ===== EXERCICES (marques fictives, pédagogiques) ===== -->
+    <section id="exercices" class="section section-light">
+      <div class="section-head reveal">
+        <p class="eyebrow">Application de la méthode SONCASE</p>
+        <h2 class="section-title">Exercices de fiches produit</h2>
+        <p class="section-lede">
+          Deux marques et produits fictifs, créés pour m'entraîner à structurer un message
+          commercial autour de la méthode SONCASE — pas des projets clients. Je ne les présente
+          jamais comme des réalisations réelles ; pour des exemples de vrais projets, voir la
+          section Projets ci-dessus.
+        </p>
+      </div>
+      <div class="exercise-grid reveal">
+
+        <article class="exercise-card">
+          <span class="exercise-flag">Exercice — marque fictive</span>
+          <div class="exercise-logo">
+            <span class="exercise-mark">△</span>NORDIA
+          </div>
+          <p class="exercise-tagline">Boisson énergisante aux baies arctiques — concept fictif</p>
+          <ul class="soncase-list">
+            <li><span class="soncase-tag">Sécurité</span> Ingrédients 100 % naturels, sans additif de synthèse : vous savez ce que vous buvez.</li>
+            <li><span class="soncase-tag">Orgueil</span> La boisson de ceux qui refusent l'énergie chimique classique.</li>
+            <li><span class="soncase-tag">Nouveauté</span> Formule à base de baies arctiques et de guarana, une première sur le marché français.</li>
+            <li><span class="soncase-tag">Confort</span> Format nomade, s'ouvre et se boit en un geste, sans sucre collant.</li>
+            <li><span class="soncase-tag">Argent</span> Moins cher au litre qu'un abonnement café-énergisant classique.</li>
+            <li><span class="soncase-tag">Sympathie</span> Une petite marque indépendante, pas un géant du soda.</li>
+            <li><span class="soncase-tag">Environnement</span> Canette recyclable à 100 %, plantes issues de filières responsables.</li>
+          </ul>
+        </article>
+
+        <article class="exercise-card">
+          <span class="exercise-flag">Exercice — marque fictive</span>
+          <div class="exercise-logo">
+            <span class="exercise-mark">◯</span>KESSEL
+          </div>
+          <p class="exercise-tagline">Moto électrique urbaine — concept fictif</p>
+          <ul class="soncase-list">
+            <li><span class="soncase-tag">Sécurité</span> Freinage ABS de série, garantie batterie 8 ans.</li>
+            <li><span class="soncase-tag">Orgueil</span> Une silhouette qui ne passe pas inaperçue en ville.</li>
+            <li><span class="soncase-tag">Nouveauté</span> Premier modèle avec échange de batterie en 90 secondes.</li>
+            <li><span class="soncase-tag">Confort</span> Zéro embrayage, zéro vidange, rechargée en une nuit.</li>
+            <li><span class="soncase-tag">Argent</span> Moins de 2 € aux 100 km, contre 8 € en essence.</li>
+            <li><span class="soncase-tag">Sympathie</span> Conçue par une petite équipe passionnée, pas une multinationale.</li>
+            <li><span class="soncase-tag">Environnement</span> Zéro émission directe, batterie recyclable.</li>
+          </ul>
         </article>
 
       </div>
@@ -927,7 +1167,7 @@ ul {
         </p>
         <div class="contact-links">
           <a href="mailto:contactfclcharles@gmail.com">✉ contactfclcharles@gmail.com</a>
-          <a href="https://github.com/[ton-pseudo]" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://github.com/contactfclcharles" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/[ton-profil]" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
@@ -936,7 +1176,7 @@ ul {
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <p class="mono-mark">C · F</p>
+    <p class="mono-mark">charles.fauchille</p>
     <p>© <span id="year"></span> Charles Fauchille. Fait avec HTML, CSS &amp; JavaScript.</p>
   </footer>
 
